@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ssid: MyString
+  password: MyString
+  location: MyString
+  user_id: 1
+  nickname: MyString
+  public_private: MyString
+
+two:
+  ssid: MyString
+  password: MyString
+  location: MyString
+  user_id: 1
+  nickname: MyString
+  public_private: MyString
