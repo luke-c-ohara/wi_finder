@@ -4,7 +4,6 @@
   <tr>
     <th>User</th>
     <th>Friend</th>
-    <th>Network</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +11,8 @@
 
 <% @friendships.each do |friendship| %>
   <tr>
-    <td><%= friendship.user_id %></td>
-    <td><%= friendship.friend_id %></td>
-    <td><%= friendship.network_id %></td>
+    <td><%= friendship.user.email %></td>
+    <td><%= friendship.friend.email %></td>
     <td><%= link_to 'Show', friendship %></td>
     <td><%= link_to 'Edit', edit_friendship_path(friendship) %></td>
     <td><%= link_to 'Destroy', friendship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
