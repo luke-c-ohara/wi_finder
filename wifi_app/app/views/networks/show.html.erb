@@ -1,35 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Ssid:</b>
-  <%= @network.ssid %>
-</p>
+<h1><%= @network.nickname %></h1>
+<h2><%= @network.location %></h2>
+<p>Network name (SSID): <%= @network.ssid %></p>
+<p>Password: <%= @network.password %></p>
+<p>Add by: <%= @network.user.email %></p>
+<p><%= @network.public_private %></p>
 
-<p>
-  <b>Password:</b>
-  <%= @network.password %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @network.location %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @network.user_id %>
-</p>
-
-<p>
-  <b>Nickname:</b>
-  <%= @network.nickname %>
-</p>
-
-<p>
-  <b>Public private:</b>
-  <%= @network.public_private %>
-</p>
-
-
-<%= link_to 'Edit', edit_network_path(@network) %> |
+<%= link_to 'Edit', edit_network_path(@network) %>
 <%= link_to 'Back', networks_path %>
