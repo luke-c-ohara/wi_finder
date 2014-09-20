@@ -1,41 +1,9 @@
 <%= form_for(@network) do |f| %>
-  <% if @network.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@network.errors.count, "error") %> prohibited this network from being saved:</h2>
-
-      <ul>
-      <% @network.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :ssid %><br />
-    <%= f.text_field :ssid %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :nickname %><br />
-    <%= f.text_field :nickname %>
-  </div>
-  <div class="field">
-    <%= f.label :public_private %><br />
-    <%= f.text_field :public_private %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.hidden_field :user_id, value: current_user.id %><br>
+  <%= f.text_field :ssid, value: 'network name (SSID)', onFocus: "this.value=''" %><br>
+  <%= f.text_field :password, value: 'password', onFocus: "this.value=''" %><br>
+  <%= f.text_field :location, value: 'address', onFocus: "this.value=''" %><br>
+  <%= f.text_field :nickname, value: 'nickname', onFocus: "this.value=''" %><br>
+  <%= f.select :public_private, options_for_select([['Private'], ['Public']]) %><br>
+  <%= f.submit 'Add network' %>
 <% end %>
