@@ -4,6 +4,7 @@ class NetworksController < ApplicationController
     @networks = Network.all
     @user_networks = Network.where(user_id: current_user.id)
     @friendships = Friendship.where(friend_id: current_user.id)
+    @inverse_friendships = Friendship.where(user_id: current_user.id)
   end
 
   def show

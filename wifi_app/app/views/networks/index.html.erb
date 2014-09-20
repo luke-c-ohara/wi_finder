@@ -1,21 +1,27 @@
 <h1>Networks</h1>
 
-<h2>All networks</h2>
-
-<% @networks.each do |network| %>
-  <ul>
-    <li><%= link_to network.ssid, network %></li>
-  </ul>
-<% end %>
-
 <h2>Your networks</h2>
 
 <% @user_networks.each do |network| %>
   <ul>
-    <li><%= link_to network.ssid, network %></li>
+    <li><%= link_to network.nickname, network %></li>
   </ul>
 <% end %>
 
-<h2>Networks shared with you</h2>
+<h2>Shared with you</h2>
+<% @friendships.each do |friendship| %>
+  <ul>
+    <% network = Network.find(friendship.network_id) %>
+    <li><%= link_to network.nickname, network %></li>
+  </ul>
+<% end %>
+
+<h2>Shared with others</h2>
+<% @inverse_friendships.each do |friendship| %>
+  <ul>
+    <% network = Network.find(friendship.network_id) %>
+    <li><%= link_to network.nickname, network %></li>
+  </ul>
+<% end %>
 
 <%= link_to 'Add a network', new_network_path %>
