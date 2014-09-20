@@ -1,40 +1,21 @@
-<h1>Listing networks</h1>
+<h1>Networks</h1>
 
-<!-- <table>
-  <tr>
-    <th>Ssid</th>
-    <th>Password</th>
-    <th>Location</th>
-    <th>User</th>
-    <th>Nickname</th>
-    <th>Public private</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr> -->
+<h2>All networks</h2>
 
-<%# @networks.each do |network| %>
-  <!-- <tr>
-    <td><%= network.ssid %></td>
-    <td><%= network.password %></td>
-    <td><%= network.location %></td>
-    <td><%= network.user_id %></td>
-    <td><%= network.nickname %></td>
-    <td><%= network.public_private %></td> -->
-    <!-- <td><%= link_to network.ssid, network %></td> -->
-    <!-- <td><%= link_to 'Edit', edit_network_path(network) %></td>
-    <td><%= link_to 'Destroy', network, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-  <!-- </tr> -->
-<%# end %>
-<!-- </table> -->
-
-<br />
-
-<%= link_to 'New Network', new_network_path %>
-
-<!-- ACTUAL CODE -->
 <% @networks.each do |network| %>
   <ul>
     <li><%= link_to network.ssid, network %></li>
   </ul>
 <% end %>
+
+<h2>Your networks</h2>
+
+<% @user_networks.each do |network| %>
+  <ul>
+    <li><%= link_to network.ssid, network %></li>
+  </ul>
+<% end %>
+
+<h2>Networks shared with you</h2>
+
+<%= link_to 'Add a network', new_network_path %>

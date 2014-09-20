@@ -7,5 +7,6 @@
 <p>Add by: <%= @network.user.email %></p>
 <p><%= @network.public_private %></p>
 
-<%= link_to 'Edit', edit_network_path(@network) %>
+<%= link_to 'Edit', edit_network_path(@network) %><br>
+<%= link_to 'Delete', @network, method: :delete, data: { confirm: 'Are you sure?' } %><br>
 <%= link_to 'Back', networks_path %>
