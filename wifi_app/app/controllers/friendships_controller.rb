@@ -1,6 +1,5 @@
 class FriendshipsController < ApplicationController
-  # GET /friendships
-  # GET /friendships.json
+  
   def index
     @friendships = Friendship.all
 
@@ -10,8 +9,6 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  # GET /friendships/1
-  # GET /friendships/1.json
   def show
     @friendship = Friendship.find(params[:id])
 
@@ -21,8 +18,6 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  # GET /friendships/new
-  # GET /friendships/new.json
   def new
     @friendship = Friendship.new
 
@@ -32,13 +27,10 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  # GET /friendships/1/edit
   def edit
     @friendship = Friendship.find(params[:id])
   end
 
-  # POST /friendships
-  # POST /friendships.json
   def create
     @friendship = Friendship.new(params[:friendship])
 
@@ -53,8 +45,6 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  # PUT /friendships/1
-  # PUT /friendships/1.json
   def update
     @friendship = Friendship.find(params[:id])
 
@@ -69,8 +59,6 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  # DELETE /friendships/1
-  # DELETE /friendships/1.json
   def destroy
     @friendship = Friendship.find(params[:id])
     @friendship.destroy

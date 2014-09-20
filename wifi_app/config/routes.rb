@@ -1,12 +1,11 @@
 WifiApp::Application.routes.draw do
+  root to: "welcome#index"
 
   resources :friendships
   resources :networks
   
   devise_for :users
 
-  root to: "welcome#index"
-
-  match '/users/:id', :to => 'users#show',    :as => :user,         :via => :get
+  match '/users/:id', :to => 'users#show', :as => :user, :via => :get
   
 end

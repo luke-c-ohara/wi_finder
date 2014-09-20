@@ -5,7 +5,7 @@
  
  <%= current_user.email %>
 
- <b>Friends:</b>
+ <p>Friends:</p>
  <% current_user.friends.each do |friend| %>
     <%= friend.email %>
     <% end %>
@@ -33,7 +33,7 @@
 <h2>Networks</h2>
 <ul>
   <% for user in current_user.inverse_friends %>
-    <li><%=h user.email %></li>
+    <li><%=h user.networks %></li>
   <% end %>
 </ul>
 
