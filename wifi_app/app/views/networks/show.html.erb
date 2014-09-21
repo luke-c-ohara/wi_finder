@@ -9,6 +9,8 @@
 <p><%= @network.longitude %> </p>
 <p><%= @network.latitude %> </p>
 
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@network.latitude}%2C#{@network.longitude}" %>
+
 <%= link_to 'Share this network', new_friendship_path %><br>
 
 <%= link_to 'Edit', edit_network_path(@network) %><br>
