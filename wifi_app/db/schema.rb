@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(:version => 20140921143317) do
     t.string   "public_private"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "users", :force => true do |t|

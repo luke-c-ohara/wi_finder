@@ -1,1 +1,16 @@
 <h2> Storing and sharing your favourite wifi network details </h2>
+
+<p>Public networks:</p>
+
+<% @public_networks.each do |public| %>
+<ul> 
+  <li><%= public.nickname %>
+  </li>
+  <li><%= public.longitude %>
+  </li>
+  <li><%= public.latitude %>
+  </li>
+</ul>
+    <% end %>
+
+
