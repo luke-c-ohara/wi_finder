@@ -1,18 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>User:</b>
-  <%= @friendship.user_id %>
+  <p>User:</p>
+  <%= @friendship.user.email %>
 </p>
 
 <p>
-  <b>Friend:</b>
-  <%= @friendship.friend_id %>
+  <p>Friend:</p>
+  <%= @friendship.friend.email %>
 </p>
 
 <p>
-  <b>Network:</b>
-  <%= @friendship.network_id %>
+  <p>Network:</p>
+<!--   define in the controller -->
+  <% network = @friendship.network_id %>
+  <%= Network.find(network).nickname %>
 </p>
 
 
