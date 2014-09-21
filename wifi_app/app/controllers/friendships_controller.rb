@@ -10,6 +10,7 @@ class FriendshipsController < ApplicationController
 
   def new
     @friendship = Friendship.new
+    @members = (User.all - [current_user])
   end
 
   def edit

@@ -17,7 +17,7 @@
  </div>
   <div class="field">
     <%= f.label :friend_id %><br />
-    <%= f.collection_select :friend_id, User.all, :id, :email %>
+    <%= f.collection_select :friend_id, @members, :id, :email %>
   </div>
   <div class="field">
     <%= f.label :network_id %><br />

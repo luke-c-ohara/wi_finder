@@ -5,18 +5,11 @@
  
  <%= current_user.email %>
 
- <p>Friends:</p>
- <% current_user.friends.each do |friend| %>
-    <%= friend.email %>
-    <% end %>
-</p>
-
-
 <h2>Friends</h2>
 <ul>
   <% for friendship in current_user.friendships %>
     <li>
-      <%=h friendship.friend.email %>
+      <%= friendship.friend.email %>
       (<%= link_to "remove", friendship, :method => :delete %>)
     </li>
   <% end %>
@@ -26,14 +19,7 @@
 <h2>Friended by Users</h2>
 <ul>
   <% for user in current_user.inverse_friends %>
-    <li><%=h user.email %></li>
-  <% end %>
-</ul>
-
-<h2>Networks</h2>
-<ul>
-  <% for user in current_user.inverse_friends %>
-    <li><%=h user.networks %></li>
+    <li><%= user.email %></li>
   <% end %>
 </ul>
 

@@ -9,7 +9,7 @@
     <th></th>
   </tr>
 
-<% @friendships.each do |friendship| %>
+<% @friendships.map do |friendship| %>
   <tr>
     <td><%= friendship.user.email %></td>
     <td><%= friendship.friend.email %></td>
@@ -22,4 +22,5 @@
 
 <br />
 
-<%= link_to 'New Friendship', new_friendship_path %>
+<%= link_to 'Share a network', new_friendship_path %>
+
