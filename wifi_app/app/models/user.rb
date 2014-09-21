@@ -14,4 +14,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
+
+  def role?(role_to_compare)
+    self.role.to_s == role_to_compare.to_s
+  end
+  
 end
