@@ -6,10 +6,10 @@
 <p>Password: <%= @network.password %></p>
 <p>Add by: <%= @network.user.email %></p>
 <p><%= @network.public_private %></p>
+<p><%= @network.longitude %> </p>
+<p><%= @network.latitude %> </p>
 
 <%= link_to 'Share this network', new_friendship_path %><br>
-
-
 
 <%= link_to 'Edit', edit_network_path(@network) %><br>
 <%= link_to 'Delete', @network, method: :delete, data: { confirm: 'Are you sure?' } %><br>
