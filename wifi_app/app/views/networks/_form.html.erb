@@ -1,9 +1,9 @@
 <%= form_for(@network) do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %><br>
-  <%= f.text_field :ssid, value: 'network name (SSID)', onFocus: "this.value=''" %><br>
-  <%= f.text_field :password, value: 'password', onFocus: "this.value=''" %><br>
-  <%= f.text_field :location, value: 'address', onFocus: "this.value=''" %><br>
-  <%= f.text_field :nickname, value: 'nickname', onFocus: "this.value=''" %><br>
+  <%= f.text_field :ssid, placeholder: 'network name (SSID)' %><br>
+  <%= f.text_field :password, placeholder: 'password' %><br>
+  <%= f.text_field :location, placeholder: 'address' %><br>
+  <%= f.text_field :nickname, placeholder: 'nickname' %><br>
   <%= f.select :public_private, options_for_select([['Private'], ['Public']]) %><br>
   <%= f.submit 'Add network' %>
 <% end %>
