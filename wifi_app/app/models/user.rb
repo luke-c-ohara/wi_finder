@@ -15,8 +15,15 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
+  before_create :default_role
+
   def role?(role_to_compare)
     self.role.to_s == role_to_compare.to_s
   end
-  
+
+  private
+  def default_role
+    self.role ||= :basic_user
+  end
+
 end

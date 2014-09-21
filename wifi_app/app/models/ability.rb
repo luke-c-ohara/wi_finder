@@ -8,6 +8,8 @@ class Ability
     elsif user.role? :basic_user
         can :read, Network
         can :create, Network
+        can :read, Friendship
+        can :create, Friendship
     else
         can :create, User
     end
