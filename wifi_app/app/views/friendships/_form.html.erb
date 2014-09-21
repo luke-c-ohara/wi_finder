@@ -11,14 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+ <div class="field">
+   <%= f.hidden_field :user_id, :value => current_user.id %>
 
-  </div>
+ </div>
   <div class="field">
     <%= f.label :friend_id %><br />
-    <%= f.collection_select :friend_id, User.all, :id, :email %>
+    <%= f.collection_select :friend_id, @members, :id, :email %>
   </div>
   <div class="field">
     <%= f.label :network_id %><br />

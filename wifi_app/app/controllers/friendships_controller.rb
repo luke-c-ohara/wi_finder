@@ -1,6 +1,5 @@
 class FriendshipsController < ApplicationController
   before_filter :authenticate_user!
-  
   def index
     @friendships = Friendship.all
   end
@@ -11,6 +10,7 @@ class FriendshipsController < ApplicationController
 
   def new
     @friendship = Friendship.new
+    @members = (User.all - [current_user])
   end
 
   def edit
