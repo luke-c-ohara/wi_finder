@@ -6,8 +6,12 @@ body {
   height: 100%;
 }
 
-#map-canvas {
-  max-height: 80%;
-  min-height: 60%;
+#map-canvas,
+.map-canvas-column {
+  height: 100%;
   width: 100%;
+}
+
+.map-canvas-row {
+  height: 50%;
 }
