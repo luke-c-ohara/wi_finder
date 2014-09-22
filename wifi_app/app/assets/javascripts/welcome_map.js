@@ -11,8 +11,6 @@ welcomeMap.initialize = function() {
     }
 
     function successCallback(position) {
-      console.log(position);
-
       var mapOptions = {
         center: { lat:  position.coords.latitude, lng: position.coords.longitude },
         zoom: 15,
@@ -34,6 +32,7 @@ welcomeMap.initialize = function() {
 
       var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
 
+      infoWindow.open(map, marker);
       google.maps.event.addListener(marker, 'click', function(){
         infoWindow.open(map, marker);
       });
