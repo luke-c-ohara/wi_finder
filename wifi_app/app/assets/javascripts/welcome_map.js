@@ -27,6 +27,16 @@ welcomeMap.initialize = function() {
       }
 
       var marker = new google.maps.Marker(markerOptions);
+
+      var infoWindowOptions = {
+        content: 'You are here!'
+      };
+
+      var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+
+      google.maps.event.addListener(marker, 'click', function(){
+        infoWindow.open(map, marker);
+      });
     }
 
     function errorCallback(error) {
