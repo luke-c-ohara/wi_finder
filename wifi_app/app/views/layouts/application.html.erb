@@ -8,10 +8,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">
 
     <div class="row">
-      <div class="columns small-12"></div>
+      <div class="small-12 columns">
         <header>
           <nav class="top-bar">
             <ul class="title-area">
@@ -23,12 +22,19 @@
             <section class="top-bar-section">
               <ul class="right">
                 <% if current_user %>
+                <li class="divider"></li>
                 <li><%= link_to current_user.email, root_path %></li>
+                <li class="divider"></li>
                 <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+                <li class="divider"></li>
                 <li><%= link_to "Networks", networks_path %></li>
+                <li class="divider"></li>
                 <% else %>
+                <li class="divider"></li>
                 <li><%= link_to "Sign In", new_user_session_path %></li>
+                <li class="divider"></li>
                 <li><%= link_to "Register", new_user_registration_path %></li>
+                <li class="divider"></li>
                 <% end %>
               </ul>
             </section>
@@ -37,11 +43,14 @@
       </div>
     </div>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
+    <div class="row">
+      <div class="small-12 columns">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+    </div>
+    
     <%= yield %>
 
-  </div>
 </body>
 </html>
