@@ -23,7 +23,7 @@ class FriendshipsController < ApplicationController
 
   def create
       @friendship = Friendship.new(params[:friendship])
-      @network = Network.find(params[:network_id])
+      
     if @friendship.save
       flash[:notice] = 'Friendship was successfully created.'
       redirect_to @friendship

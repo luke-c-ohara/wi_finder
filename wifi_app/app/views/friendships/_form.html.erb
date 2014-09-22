@@ -13,7 +13,6 @@
 
  <div class="field">
    <%= f.hidden_field :user_id, :value => current_user.id %>
-
  </div>
   <div class="field">
     <%= f.label :friend_id %><br />
@@ -21,7 +20,7 @@
   </div>
   <div class="field">
     <%= f.label :network_id %><br />
-    <%= f.collection_select :network_id, current_user.networks, :id, :nickname %>
+    <%= f.hidden_field :network_id, :value => @network.id %>
   </div>
   <div class="actions">
     <%= f.submit value="Share network" %>
