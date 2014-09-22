@@ -13,10 +13,6 @@ welcomeMap.initialize = function() {
     function successCallback(position) {
       console.log(position);
 
-      var latlong = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-      console.log(latlong);
-
       var mapOptions = {
         center: { lat:  position.coords.latitude, lng: position.coords.longitude },
         zoom: 15,
@@ -24,6 +20,13 @@ welcomeMap.initialize = function() {
       };
 
       var map = new google.maps.Map(mapCanvas, mapOptions);
+
+      var markerOptions = {
+        position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+        map: map
+      }
+
+      var marker = new google.maps.Marker(markerOptions);
     }
 
     function errorCallback(error) {
