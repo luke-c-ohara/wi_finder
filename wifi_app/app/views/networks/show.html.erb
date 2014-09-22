@@ -9,7 +9,12 @@
 
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@network.latitude}%2C#{@network.longitude}" %><br>
 
-<%= link_to 'Share this network', new_network_friendship_path(@network, @friendship) %><br>
+
+<h2>Shared with</h2>
+<% @network.friends.each do |friend| %>
+  <%= friend.email %>
+<% end %>
+<%= link_to 'Share this network', sharings_new_network_path(@network) %><br>
 
 <%= link_to 'Edit', edit_network_path(@network) %><br>
 <%= link_to 'Delete', @network, method: :delete, data: { confirm: 'Are you sure?' } %><br>

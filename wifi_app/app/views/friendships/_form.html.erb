@@ -1,10 +1,10 @@
-<%= form_for [@network, @friendship] do |f| %>
-  <% if @friendship.errors.any? %>
+<%= form_for @network do |f| %>
+  <% if @network.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@friendship.errors.count, "error") %> prohibited this friendship from being saved:</h2>
+      <h2><%= pluralize(@network.errors.count, "error") %> prohibited this friendship from being saved:</h2>
 
       <ul>
-      <% @friendship.errors.full_messages.each do |msg| %>
+      <% @network.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -14,6 +14,11 @@
  <div class="field">
    <%= f.hidden_field :user_id, :value => current_user.id %>
  </div>
+
+  <div class="field">
+
+  </div>
+
   <div class="field">
     <%= f.label :friend_id %><br />
     <%= f.collection_select :friend_id, @members, :id, :email %>

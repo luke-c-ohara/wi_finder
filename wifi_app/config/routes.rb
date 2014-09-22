@@ -1,8 +1,15 @@
 WifiApp::Application.routes.draw do
+  get "sharings/new"
+
+  get "sharings/create"
+
   root to: "welcome#index"
 
   resources :networks do
-    resources :friendships
+    member do
+      get 'sharings/new'
+      post 'sharings', to: 'sharings#create'
+    end
   end 
 
   devise_for :users
