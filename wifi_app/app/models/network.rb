@@ -6,4 +6,6 @@ class Network < ActiveRecord::Base
   geocoded_by :location
   after_validation :geocode, :if => :location_changed?
 
+  has_many :friends, :class_name => "User", through: :friendships
+
 end
