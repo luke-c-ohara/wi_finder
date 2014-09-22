@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WifiApp</title>
+  <title>wi-finder</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1> WELCOME TO THE WIFI APP </h1>
-
-<nav>
-  <ul>
-      <% if current_user %>
-      <li><%= current_user.email %></li> 
-      <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-      <% else %>
-      <li><%= link_to "Sign In", new_user_session_path %></li>
-      <li><%= link_to "Register", new_user_registration_path %></li>
-      <% end %>
-    <li><%= link_to "Home", root_path %></li>
-    <li><%= link_to "Networks", networks_path %></li>
-  </ul>
-</nav>
+  <header>
+    <h1>wi-finder</h1>
+    <nav>
+      <ul>
+        <% if current_user %>
+        <li><%= current_user.email %></li> 
+        <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+        <li><%= link_to "Sign In", new_user_session_path %></li>
+        <li><%= link_to "Register", new_user_registration_path %></li>
+        <% end %>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Networks", networks_path %></li>
+      </ul>
+    </nav>
+  </header>
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>
