@@ -11,6 +11,15 @@ welcomeMap.initialize = function() {
     }
 
     function successCallback(position) {
+      $.ajax({
+        url: '/networks',
+        type: 'GET',
+        dataType: 'JSON',
+        success: function(data) {
+          console.log(data);
+        }
+      });
+
       var locations = [['You are here!', position.coords.latitude, position.coords.longitude], ['20 Eyre Street Hill', 51.5225220, -0.1103600]];
 
       var mapOptions = {
