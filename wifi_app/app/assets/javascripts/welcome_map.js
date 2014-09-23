@@ -31,12 +31,12 @@ welcomeMap.initialize = function() {
           map: map
         });
 
-        google.maps.addListener(marker, 'click', (function(marker, index_increment) {
-          return function() {
-            infoWindow.setContent(location[index_increment][0]);
-            infoWindow.open(map, marker);
-          }
-        }) (marker, index_increment));
+        // google.maps.addListener(marker, 'click', (function(marker, index_increment) {
+        //   return function() {
+        //     infoWindow.setContent(location[index_increment][0]);
+        //     infoWindow.open(map, marker);
+        //   }
+        // }) (marker, index_increment));
       }
     }
 
