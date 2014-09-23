@@ -31,9 +31,14 @@ welcomeMap.initialize = function() {
           map: map
         });
 
+        // google.maps.event.addListener(marker, 'click', function() {
+        //   infoWindow.setContent(locations[index_increment][0]);
+        //   infoWindow.open(map, marker);
+        // });
+
         // google.maps.addListener(marker, 'click', (function(marker, index_increment) {
         //   return function() {
-        //     infoWindow.setContent(location[index_increment][0]);
+        //     infoWindow.setContent(locations[index_increment][0]);
         //     infoWindow.open(map, marker);
         //   }
         // }) (marker, index_increment));
