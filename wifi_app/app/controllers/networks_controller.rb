@@ -7,6 +7,11 @@ class NetworksController < ApplicationController
     @user_networks = Network.where(user_id: current_user.id)
     @friendships = Friendship.where(friend_id: current_user.id)
     @inverse_friendships = Friendship.where(user_id: current_user.id)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @networks }
+    end
   end
 
   def show
