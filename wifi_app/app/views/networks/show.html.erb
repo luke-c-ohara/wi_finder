@@ -1,21 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="row network_index">
+  <div class="small-12 medium-12 large-12 columns">
+    <p id="notice"><%= notice %></p>
 
-<h1><%= @network.nickname %></h1>
-<h2><%= @network.location %></h2>
-<p>Network name (SSID): <%= @network.ssid %></p>
-<p>Password: <%= @network.password %></p>
-<p>Add by: <%= @network.user.email %></p>
-<p><%= @network.public_private %></p>
+    <h1><%= @network.nickname %></h1>
+    <h2><%= @network.location %></h2>
 
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@network.latitude}%2C#{@network.longitude}" %><br>
+    <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@network.latitude}%2C#{@network.longitude}" %>
 
+    <table>
+      <tr>
+        <td><p>Network name (SSID):</p></td>
+        <td><p><%= @network.ssid %></p></td>
+      </tr>
+      <tr>
+        <td><p>Password:</p></td>
+        <td><p><%= @network.password %></p></td>
+      </tr>
+      <tr>
+        <td><p>Add by:</p></td>
+        <td><p><%= @network.user.email %></p></td>
+      </tr>
+      <tr>
+        <td><p>Privacy:</p></td>
+        <td><p><%= @network.public_private %></p></td>
+      </tr>
+    </table>
 
-<h2>Shared with</h2>
-<% @network.friends.each do |friend| %>
-  <%= friend.email %>
-<% end %>
-<%= link_to 'Share this network', sharings_new_network_path(@network) %><br>
+    
 
-<%= link_to 'Edit', edit_network_path(@network) %><br>
-<%= link_to 'Delete', @network, method: :delete, data: { confirm: 'Are you sure?' } %><br>
-<%= link_to 'Back', networks_path %>
+    <%= link_to 'Share this network', sharings_new_network_path(@network), :class => "button expand" %><br>
+
+    <h2>Shared with</h2>
+    <% @network.friends.each do |friend| %>
+    <%= friend.email %>
+    <% end %>
+
+    <%= link_to 'Edit', edit_network_path(@network) %><br>
+    <%= link_to 'Delete', @network, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+    <%= link_to 'Back', networks_path %>
+  </div>
+</div>

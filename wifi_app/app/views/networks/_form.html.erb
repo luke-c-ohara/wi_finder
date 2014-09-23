@@ -7,5 +7,5 @@
   <div><%= f.hidden_field :latitude, :value => @network.latitude %></div>
   <div><%= f.text_field :nickname, placeholder: 'nickname' %></div>
   <div><%= f.select :public_private, options_for_select([['Private'], ['Public']]) %></div>
-  <%= f.submit 'Add network' %>
+  <%= f.submit 'Add network', :class => "button expand" %>
 <% end %>
