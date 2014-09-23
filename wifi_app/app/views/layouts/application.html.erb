@@ -1,32 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WifiApp</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <title>wi-finder</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1> WELCOME TO THE WIFI APP </h1>
 
-<nav>
-  <ul>
-      <% if current_user %>
-      <li><%= current_user.email %></li> 
-      <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-      <% else %>
-      <li><%= link_to "Sign In", new_user_session_path %></li>
-      <li><%= link_to "Register", new_user_registration_path %></li>
-      <% end %>
-    <li><%= link_to "Home", root_path %></li>
-    <li><%= link_to "Networks", networks_path %></li>
-  </ul>
-</nav>
+    <div class="row">
+      <div class="small-12 columns">
+        <header>
+          <nav class="top-bar">
+            <ul class="title-area">
+              <li class="name">
+                <h1><%= link_to "wi-finder", root_path %></h1>
+              </li>
+            </ul>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+            <section class="top-bar-section">
+              <ul class="right">
+                <% if current_user %>
+                <li class="divider"></li>
+                <li><%= link_to current_user.email, root_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Networks", networks_path %></li>
+                <li class="divider"></li>
+                <% else %>
+                <li class="divider"></li>
+                <li><%= link_to "Sign In", new_user_session_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Register", new_user_registration_path %></li>
+                <li class="divider"></li>
+                <% end %>
+              </ul>
+            </section>
+          </nav>
+        </header>
+      </div>
+    </div>
 
-<%= yield %>
+    <div class="row">
+      <div class="small-12 columns">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+    </div>
+    
+    <%= yield %>
 
 </body>
 </html>

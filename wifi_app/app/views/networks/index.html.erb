@@ -1,6 +1,6 @@
-<h1>Networks</h1>
+<h2>Networks</h2>
 
-<h2>My networks</h2>
+<h3>My networks</h3>
 
 <% @user_networks.each do |network| %>
   <ul>
@@ -8,7 +8,7 @@
   </ul>
 <% end %>
 
-<h2>Shared with me</h2>
+<h3>Shared with me</h3>
 <% @friendships.each do |friendship| %>
   <ul>
     <% network = Network.find(friendship.network_id) %>
@@ -16,7 +16,7 @@
   </ul>
 <% end %>
 
-<h2>Shared with others</h2>
+<h3>Shared with others</h3>
 <% @inverse_friendships.each do |friendship| %>
   <ul>
     <% network = Network.find(friendship.network_id) %>

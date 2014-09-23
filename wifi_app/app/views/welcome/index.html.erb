@@ -1,16 +1,17 @@
-<h2> Storing and sharing your favourite wifi network details </h2>
+<div class="row map-canvas-row">
+  <div class="small-12 medium-6 large-4 columns">
+    <h2>Storing and sharing your favourite wifi network details</h2>
 
-<p>Public networks:</p>
+    <h3>Public networks:</h3>
 
-<% @public_networks.each do |public| %>
-<ul> 
-  <li><%= public.nickname %>
-  </li>
-  <li><%= public.longitude %>
-  </li>
-  <li><%= public.latitude %>
-  </li>
-</ul>
+    <% @public_networks.each do |network| %>
+    <ul> 
+      <li><%= link_to network.nickname, network %></li>
+    </ul>
     <% end %>
+  </div>
 
-
+  <div class="small-12 medium-6 large-8 columns map-canvas-column">
+    <section id="map-canvas"></section>
+  </div>
+</div>
