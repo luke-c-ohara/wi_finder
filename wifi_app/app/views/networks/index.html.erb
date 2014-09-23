@@ -1,27 +1,40 @@
-<h2>Networks</h2>
+<div class="row network_index">
+  <div class="small-12 medium-12 large-12 columns">
 
-<h3>My networks</h3>
 
-<% @user_networks.each do |network| %>
-  <ul>
-    <li><%= link_to network.nickname, network %></li>
-  </ul>
-<% end %>
+    <table>
+      <caption><h2>Networks</h2></caption>
 
-<h3>Shared with me</h3>
-<% @friendships.each do |friendship| %>
-  <ul>
-    <% network = Network.find(friendship.network_id) %>
-    <li><%= link_to network.nickname, network %></li>
-  </ul>
-<% end %>
+      <tr>
+        <th><h3>My networks</h3></th>
+      </tr>
+      <% @user_networks.each do |network| %>
+      <tr>
+        <td><%= link_to network.nickname, network %></td>
+      </tr>
+      <% end %>
 
-<h3>Shared with others</h3>
-<% @inverse_friendships.each do |friendship| %>
-  <ul>
-    <% network = Network.find(friendship.network_id) %>
-    <li><%= link_to network.nickname, network %></li>
-  </ul>
-<% end %>
+      <tr>
+        <th><h3>Shared with me</h3></th>
+      </tr>
+      <% @friendships.each do |friendship| %>
+      <tr>
+        <% network = Network.find(friendship.network_id) %>
+        <td><%= link_to network.nickname, network %></td>
+      </tr>
+      <% end %>
 
-<%= link_to 'Add a network', new_network_path %>
+      <tr>
+        <th><h3>Shared with others</h3></th>
+      </tr>
+      <% @inverse_friendships.each do |friendship| %>
+      <tr>
+        <% network = Network.find(friendship.network_id) %>
+        <td><%= link_to network.nickname, network %></td>
+      </tr>
+      <% end %>
+    </table>
+
+    <%= link_to 'Add a network', new_network_path, :class => "button expand" %>
+  </div>
+</div>
