@@ -23,11 +23,25 @@ welcomeMap.initialize = function() {
 
       var infoWindow = new google.maps.InfoWindow();
 
-      var marker, increment;
+      var marker, index_increment;
 
-      for (increment = 0; increment < locations.length; increment++) {
-        marker = new
+      for (index_increment = 0; index_increment < locations.length; index_increment++) {
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(locations[index_increment][1], locations[index_increment][2]),
+          map: map
+        });
+
+        google.maps.addListener(marker, 'click', (function(marker, index_increment) {
+          return function() {
+            infoWindow.setContent(location[index_increment][0]);
+            infoWindow.open(map, marker);
+          }
+        }) (marker, index_increment));
       }
+    }
+
+    function errorCallback(error) {
+      console.log(error);
     }
 
     // OLD GEOLOCATOR WORKING
@@ -61,7 +75,7 @@ welcomeMap.initialize = function() {
 
     // function errorCallback(error) {
     //   console.log(error);
-    }
+    // }
   }
 }
 
