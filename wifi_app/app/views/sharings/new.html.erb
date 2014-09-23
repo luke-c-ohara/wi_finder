@@ -1,30 +1,30 @@
-<h1>Share a network</h1>
+<div class="row network_index">
+  <div class="small-12 medium-12 large-12 columns">
+    <h1>Share a network</h1>
 
-<%= form_tag sharings_network_path(@network) do %>
-  <% if @network.errors.any? %>
+    <%= form_tag sharings_network_path(@network) do %>
+    <% if @network.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@network.errors.count, "error") %> prohibited this friendship from being saved:</h2>
 
       <ul>
-      <% @network.errors.full_messages.each do |msg| %>
+        <% @network.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
-      <% end %>
+        <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
 
-  <%= hidden_field_tag 'friend_ids[]' %>
-  <% @members.each do |member| %>
+    <%= hidden_field_tag 'friend_ids[]' %>
+    <% @members.each do |member| %>
     <div class="field">
       <%= label_tag "friend_ids_#{member.id}", member.email %><br />
       <%= check_box_tag 'friend_ids[]', member.id, @network.shared_with?(member) %>
     </div>
-  <% end %>
-  <div class="actions">
-    <%= submit_tag "Share network" %>
+    <% end %>
+    <div class="actions">
+      <%= submit_tag "Share network", :class => "button expand" %>
+    </div>
+    <% end %>
   </div>
-<% end %>
-
-
-
-
+</div>

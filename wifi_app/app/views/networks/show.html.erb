@@ -33,7 +33,7 @@
     <h2>Shared with</h2>
     <% @network.friends.each do |friend| %>
     <%= friend.email %>
-    <% end %>
+    <% end %><br>
 
     <%= link_to 'Edit', edit_network_path(@network) %><br>
     <%= link_to 'Delete', @network, method: :delete, data: { confirm: 'Are you sure?' } %><br>
