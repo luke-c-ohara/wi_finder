@@ -3,9 +3,8 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
-    binding.pry
-    if params[:search] 
-      @users = User.limit(1)
+    if params[:q]
+      @users = User.search(params[:q])
     else
       @users = User.all
     end
@@ -19,3 +18,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 end
+
+
+@users = User.limit(1)

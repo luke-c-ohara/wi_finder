@@ -26,18 +26,23 @@ $(function() {
       data: { q: $('#user_search').val() },
       dataType: 'JSON',
       success: function(data) {
+        $("#search_users").empty()
         data.forEach(displayEmails);
       }
     });
   });
 });
 
+function returnEmail(object) {
+  console.log(object.email);
+}
+
 function displayEmails(object) {
+
+
   $("#search_users").append("<p>" + object.email + " </p>");
 
-
   $("#search_users").append('<input type="checkbox" id="' + object.id + 'VisibleCheckbox" name="'  + object.email + 'VisibleCheckbox" >');
-
 }
 
 

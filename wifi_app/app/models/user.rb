@@ -28,9 +28,9 @@ class User < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where(:all, :conditions => ['email LIKE ?', "%#{search}%"])
+      where('email LIKE ?', "%#{search}%")
     else
-      where(:all)
+      scoped
     end
   end
 
