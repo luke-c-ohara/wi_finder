@@ -13,14 +13,16 @@
     </div>
   <% end %>
 
-  <%= hidden_field_tag 'friend_ids[]' %>
-  <% @members.each do |member| %>
-    <div class="field">
-      <%= label_tag "friend_ids_#{member.id}", member.email %><br />
-      <%= check_box_tag 'friend_ids[]', member.id, @network.shared_with?(member) %>
-    </div>
-  <% end %>
-  <div class="actions">
-    <%= submit_tag "Share network" %>
+  <div><%= text_field_tag :user_search, nil, class: 'search_input' %>
+        <%= submit_tag "Search" %>
+
+  <div id="search_users">
+    <ul>
+    </ul>
   </div>
+
+
+  </div>
+
+
 <% end %>
