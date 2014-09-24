@@ -15,11 +15,6 @@
     </div>
     <% end %>
 
-    <div class="ui-widget">
-      <label for="tags">Tags: </label>
-      <input id="tags">
-    </div>
-
     <%= text_field_tag :user_search, nil, class: 'search_input' %>
     <%= submit_tag("Search", :id=>"search-users") %>
     <div id="search_users"></div>
