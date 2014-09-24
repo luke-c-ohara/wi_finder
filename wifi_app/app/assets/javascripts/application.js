@@ -12,26 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require typeahead
 //= require welcome_map.js
 //= require_tree .
 
 $(function() {
-
-  // var bestPictures = new Bloodhound({
-  //   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-  //   queryTokenizer: Bloodhound.tokenizers.whitespace,
-  //   prefetch: '/users.json',
-  //   // remote: './users/%QUERY.json'
-  // });
-   
-  // bestPictures.initialize();
-   
-  // $('#remote .typeahead').typeahead(null, {
-  //   name: 'best-pictures',
-  //   displayKey: 'value',
-  //   source: bestPictures.ttAdapter()
-  // });
 
   $('#search-users').on('click', function(ev){
     ev.preventDefault();
@@ -49,15 +33,13 @@ $(function() {
   });
 });
 
-function returnEmail(object) {
-  console.log(object.email);
-}
-
 function displayEmails(object) {
   $("#search_users").append('<label for="friend_ids_'+object.id+'">' + object.email + '</label>');
   $("#search_users").append('<input id="friend_ids_" name="friend_ids[]" type="checkbox" value="'+object.id+'">');
 
 }
+
+
 
 
 
