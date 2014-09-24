@@ -2,7 +2,7 @@ var welcomeMap = welcomeMap || {} ;
 
 welcomeMap.initialize = function() {
   var mapCanvas = $('#map-canvas')[0];
-  var locations = [{location: '20 Eyre Street Hill', latitude: 51.5225220, longitude: -0.1103600}];
+  // var locations = [{location: '20 Eyre Street Hill', latitude: 51.5225220, longitude: -0.1103600}];
   var map;
 
   if (!!mapCanvas){
@@ -13,7 +13,7 @@ welcomeMap.initialize = function() {
     }
 
     function successCallback(position) {
-      locations.push({location: 'You are here!', latitude: position.coords.latitude, longitude: position.coords.longitude});
+      // locations.push({location: 'You are here!', latitude: position.coords.latitude, longitude: position.coords.longitude});
 
       $.ajax({
         url: '/networks',
@@ -21,6 +21,7 @@ welcomeMap.initialize = function() {
         dataType: 'JSON',
         success: function(data) {
           console.log(data);
+          data.push({location: 'You are here!', latitude: position.coords.latitude, longitude: position.coords.longitude});
           setupMap(data);
         }
       });
@@ -39,7 +40,7 @@ welcomeMap.initialize = function() {
     function setupMap(data) {
       for (index_increment = 0; index_increment < data.length; index_increment++) {
         var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(data[index_increment].latitude , data[index_increment].longitude),
+          position: new google.maps.LatLng(data[index_increment].latitude, data[index_increment].longitude),
           map: map
         });
 
@@ -56,8 +57,6 @@ welcomeMap.initialize = function() {
         // }) (marker, index_increment));
       }
     }
-
-    setupMap(locations);
 
     function errorCallback(error) {
       console.log(error);
