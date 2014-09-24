@@ -21,7 +21,7 @@
         <section class="top-bar-section">
           <ul class="right">
             <% if current_user %>
-            <li><%= link_to current_user.email, root_path %></li>
+            <li><%= link_to "Home | #{current_user.email}", root_path %></li>
             <li><%= link_to "Networks", networks_path %></li>
             <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
             <% else %>
