@@ -2,6 +2,10 @@ var welcomeMap = welcomeMap || {} ;
 
 welcomeMap.initialize = function() {
   var mapCanvas = $('#map-canvas')[0];
+  var locations = [{location: '20 Eyre Street Hill', latitude: 51.5225220, longitude: -0.1103600}];
+var map;
+
+
   if (!!mapCanvas){
 
     if (navigator.geolocation) {
@@ -11,16 +15,17 @@ welcomeMap.initialize = function() {
     }
 
     function successCallback(position) {
+      locations.push({location: 'You are here!', latitude: position.coords.latitude, longitude: position.coords.longitude});
+
       $.ajax({
         url: '/networks',
         type: 'GET',
         dataType: 'JSON',
         success: function(data) {
           console.log(data);
+          setupMap(data);
         }
       });
-
-      var locations = [['You are here!', position.coords.latitude, position.coords.longitude], ['20 Eyre Street Hill', 51.5225220, -0.1103600]];
 
       var mapOptions = {
         center: { lat:  position.coords.latitude, lng: position.coords.longitude },
@@ -28,15 +33,20 @@ welcomeMap.initialize = function() {
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
 
-      var map = new google.maps.Map(mapCanvas, mapOptions);
+      map = new google.maps.Map(mapCanvas, mapOptions);
 
       var infoWindow = new google.maps.InfoWindow();
 
-      var marker, index_increment;
+      };
 
-      for (index_increment = 0; index_increment < locations.length; index_increment++) {
-        marker = new google.maps.Marker({
-          position: new google.maps.LatLng(locations[index_increment][1], locations[index_increment][2]),
+
+         
+
+      function setupMap(data) {
+
+      for (index_increment = 0; index_increment < data.length; index_increment++) {
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(data[index_increment].latitude , data[index_increment].longitude),
           map: map
         });
 
@@ -53,6 +63,8 @@ welcomeMap.initialize = function() {
         // }) (marker, index_increment));
       }
     }
+
+setupMap(locations);
 
     function errorCallback(error) {
       console.log(error);
