@@ -19,5 +19,3 @@ class UsersController < ApplicationController
   end
 end
 
-
-@users = User.limit(1)

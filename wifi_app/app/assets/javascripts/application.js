@@ -12,13 +12,29 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require typeahead
 //= require welcome_map.js
 //= require_tree .
 
 $(function() {
-  $('form').on('submit', function(ev){
+
+  // var bestPictures = new Bloodhound({
+  //   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+  //   queryTokenizer: Bloodhound.tokenizers.whitespace,
+  //   prefetch: '/users.json',
+  //   // remote: './users/%QUERY.json'
+  // });
+   
+  // bestPictures.initialize();
+   
+  // $('#remote .typeahead').typeahead(null, {
+  //   name: 'best-pictures',
+  //   displayKey: 'value',
+  //   source: bestPictures.ttAdapter()
+  // });
+
+  $('#search-users').on('click', function(ev){
     ev.preventDefault();
-    // alert("a search has been made.");
     console.log('searched')
     $.ajax({
       url: '/users',
@@ -38,12 +54,11 @@ function returnEmail(object) {
 }
 
 function displayEmails(object) {
+  $("#search_users").append('<label for="friend_ids_'+object.id+'">' + object.email + '</label>');
+  $("#search_users").append('<input id="friend_ids_" name="friend_ids[]" type="checkbox" value="'+object.id+'">');
 
-
-  $("#search_users").append("<p>" + object.email + " </p>");
-
-  $("#search_users").append('<input type="checkbox" id="' + object.id + 'VisibleCheckbox" name="'  + object.email + 'VisibleCheckbox" >');
 }
+
 
 
 
