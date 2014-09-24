@@ -26,4 +26,12 @@ class User < ActiveRecord::Base
     self.role ||= :basic_user
   end
 
+  def self.search(search)
+    if search
+      where('email LIKE ?', "%#{search}%")
+    else
+      scoped
+    end
+  end
+
 end

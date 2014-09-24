@@ -1,4 +1,5 @@
 class SharingsController < ApplicationController
+  
   def new    
     @network = Network.find(params[:id])
     @members = (User.all - [current_user])

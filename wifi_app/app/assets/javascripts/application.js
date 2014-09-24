@@ -14,3 +14,34 @@
 //= require jquery_ujs
 //= require welcome_map.js
 //= require_tree .
+
+$(function() {
+
+  $('#search-users').on('click', function(ev){
+    ev.preventDefault();
+    console.log('searched')
+    $.ajax({
+      url: '/users',
+      type: 'GET',
+      data: { q: $('#user_search').val() },
+      dataType: 'JSON',
+      success: function(data) {
+        $("#search_users").empty()
+        data.forEach(displayEmails);
+      }
+    });
+  });
+});
+
+function displayEmails(object) {
+  $("#search_users").append('<label for="friend_ids_'+object.id+'">' + object.email + '</label>');
+  $("#search_users").append('<input id="friend_ids_" name="friend_ids[]" type="checkbox" value="'+object.id+'">');
+
+}
+
+
+
+
+
+
+
