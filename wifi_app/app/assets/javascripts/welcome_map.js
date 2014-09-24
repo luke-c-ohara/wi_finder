@@ -2,7 +2,6 @@ var welcomeMap = welcomeMap || {} ;
 
 welcomeMap.initialize = function() {
   var mapCanvas = $('#map-canvas')[0];
-  // var locations = [{location: '20 Eyre Street Hill', latitude: 51.5225220, longitude: -0.1103600}];
   var map;
 
   if (!!mapCanvas){
@@ -13,14 +12,11 @@ welcomeMap.initialize = function() {
     }
 
     function successCallback(position) {
-      // locations.push({location: 'You are here!', latitude: position.coords.latitude, longitude: position.coords.longitude});
-
       $.ajax({
         url: '/networks',
         type: 'GET',
         dataType: 'JSON',
         success: function(data) {
-          console.log(data);
           data.push({location: 'You are here!', latitude: position.coords.latitude, longitude: position.coords.longitude});
           setupMap(data);
         }
@@ -34,24 +30,29 @@ welcomeMap.initialize = function() {
 
       map = new google.maps.Map(mapCanvas, mapOptions);
 
-      var infoWindow = new google.maps.InfoWindow();
+      // var infoWindow = new google.maps.InfoWindow();
     }
 
     function setupMap(data) {
-      for (index_increment = 0; index_increment < data.length; index_increment++) {
+
+      console.log(data)
+
+      for (var index_increment = 0; index_increment < data.length; index_increment++) {
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(data[index_increment].latitude, data[index_increment].longitude),
-          map: map
+          map: map,
+          location: data[index_increment].location 
         });
 
-        // google.maps.event.addListener(marker, 'click', function() {
-        //   infoWindow.setContent(locations[index_increment][0]);
-        //   infoWindow.open(map, marker);
-        // });
+        google.maps.event.addListener(marker, 'click', function() {
+          var popup = new google.maps.InfoWindow();
+          popup.setContent(marker.location);
+          popup.open(map, marker);
+        });
 
-        // google.maps.addListener(marker, 'click', (function(marker, index_increment) {
+        // google.maps.event.addListener(marker, 'click', (function(marker, index_increment) {
         //   return function() {
-        //     infoWindow.setContent(locations[index_increment][0]);
+        //     infoWindow.setContent(data[index_increment].location);
         //     infoWindow.open(map, marker);
         //   }
         // }) (marker, index_increment));
