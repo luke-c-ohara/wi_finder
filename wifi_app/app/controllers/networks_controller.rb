@@ -7,10 +7,11 @@ class NetworksController < ApplicationController
     @user_networks = Network.where(user_id: current_user.id)
     @friendships = Friendship.where(friend_id: current_user.id)
     @inverse_friendships = Friendship.where(user_id: current_user.id)
+    @json_networks = (Network.where(public_private: 'Public') + @user_networks).uniq
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @networks }
+      format.json { render json: @json_networks }
     end
   end
 
