@@ -3,11 +3,9 @@ var welcomeMap = welcomeMap || {} ;
 welcomeMap.initialize = function() {
   var mapCanvas = $('#map-canvas')[0];
   var locations = [{location: '20 Eyre Street Hill', latitude: 51.5225220, longitude: -0.1103600}];
-var map;
-
+  var map;
 
   if (!!mapCanvas){
-
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     } else {
@@ -36,14 +34,9 @@ var map;
       map = new google.maps.Map(mapCanvas, mapOptions);
 
       var infoWindow = new google.maps.InfoWindow();
+    }
 
-      };
-
-
-         
-
-      function setupMap(data) {
-
+    function setupMap(data) {
       for (index_increment = 0; index_increment < data.length; index_increment++) {
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(data[index_increment].latitude , data[index_increment].longitude),
@@ -64,7 +57,7 @@ var map;
       }
     }
 
-setupMap(locations);
+    setupMap(locations);
 
     function errorCallback(error) {
       console.log(error);
