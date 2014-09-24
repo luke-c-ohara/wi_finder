@@ -32,9 +32,6 @@ welcomeMap.initialize = function() {
     }
 
     function setupMap(data) {
-
-      console.log(data)
-
       for (var index_increment = 0; index_increment < data.length; index_increment++) {
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(data[index_increment].latitude, data[index_increment].longitude),
@@ -50,7 +47,6 @@ welcomeMap.initialize = function() {
           var popup = new google.maps.InfoWindow({
             content: "<strong>" + this.nickname + "</strong><br><medium>Network: </medium><a href='networks/" + this.id + "''>" + this.ssid +"</a><br><medium> Address: " + this.location + "</medium><br><medium>Password: " + this.password + "</medium>"
           });
-          // popup.setContent(this.location);
           popup.open(map, this);
         });
       }
