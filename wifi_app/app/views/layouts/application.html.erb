@@ -12,11 +12,9 @@
 
   <header>
     <div class="contain-to-grid">
-      <nav class="top-bar" data-topbar role="navigation">
+      <nav class="top-bar" data-topbar role="navigation" data-options="is_hover: false">
         <ul class="title-area">
-          <li class="name">
-            <h1><%= link_to "wi-finder", root_path %></h1>
-          </li>
+          <li class="name"><h1><%= link_to "wi-finder", root_path %></h1></li>
           <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
         </ul>
 
@@ -45,6 +43,9 @@
     </div>
     
     <%= yield %>
-
+    
+    <script>
+      $(document).foundation();
+    </script>
 </body>
 </html>

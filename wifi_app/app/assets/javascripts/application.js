@@ -12,9 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation.js
-//= require foundation.topbar.js
-//= require foundation.dropdown.js
+//= require modernizr.js
+//= require foundation.min.js
 //= require welcome_map.js
 //= require_tree .
 
