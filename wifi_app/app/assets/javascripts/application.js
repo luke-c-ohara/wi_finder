@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui.js
 //= require welcome_map.js
 //= require_tree .
 
@@ -31,6 +32,30 @@ $(function() {
       }
     });
   });
+
+  
+
+  $( document ).ready(function() {
+      console.log( "ready!" );
+      $.ajax({
+        url: '/users',
+        type: 'GET',
+        dataType: 'JSON',
+        success: function(data) {
+          console.log(data);
+          var tags = [];
+          for (var i = 0; i < data.length; i++) {
+          tags.push(data[i].email);
+          
+          }
+          // var tags = data.map(returnEmail);
+          console.log(tags);
+          $( "#tags" ).autocomplete({
+                source: tags
+              });
+        }
+      });
+  }); 
 });
 
 function displayEmails(object) {
@@ -39,9 +64,9 @@ function displayEmails(object) {
 
 }
 
-
-
-
+function returnEmail(object) {
+  object.email
+}
 
 
 
