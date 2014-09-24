@@ -46,8 +46,8 @@ welcomeMap.initialize = function() {
 
         google.maps.event.addListener(marker, 'click', function() {
           var popup = new google.maps.InfoWindow();
-          popup.setContent(marker.location);
-          popup.open(map, marker);
+          popup.setContent(this.location);
+          popup.open(map, this);
         });
 
         // google.maps.event.addListener(marker, 'click', (function(marker, index_increment) {
