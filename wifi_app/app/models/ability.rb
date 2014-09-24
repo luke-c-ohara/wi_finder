@@ -17,6 +17,7 @@ class Ability
         can :read, Friendship
         can :create, Friendship, user_id: user.id
         can :destroy, Friendship
+        can :read, User
     else
         can :create, User
     end

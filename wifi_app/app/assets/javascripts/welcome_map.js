@@ -2,8 +2,9 @@ var welcomeMap = welcomeMap || {} ;
 
 welcomeMap.initialize = function() {
   var mapCanvas = $('#map-canvas')[0];
-  if (!!mapCanvas){
+  var map;
 
+  if (!!mapCanvas){
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     } else {
@@ -11,44 +12,49 @@ welcomeMap.initialize = function() {
     }
 
     function successCallback(position) {
+      $.ajax({
+        url: '/networks',
+        type: 'GET',
+        dataType: 'JSON',
+        success: function(data) {
+          data.push({nickname: 'You are here!', location: 'Current location', latitude: position.coords.latitude, longitude: position.coords.longitude});
+          setupMap(data);
+        }
+      });
+
       var mapOptions = {
         center: { lat:  position.coords.latitude, lng: position.coords.longitude },
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
 
-      var map = new google.maps.Map(mapCanvas, mapOptions);
+      map = new google.maps.Map(mapCanvas, mapOptions);
+    }
 
-      var markerOptions = {
-        position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
-        map: map
+    function setupMap(data) {
+      for (var index_increment = 0; index_increment < data.length; index_increment++) {
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(data[index_increment].latitude, data[index_increment].longitude),
+          map: map,
+          location: data[index_increment].location,
+          nickname: data[index_increment].nickname,
+          ssid: data[index_increment].ssid,
+          password: data[index_increment].password,
+          id: data[index_increment].id
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          var popup = new google.maps.InfoWindow({
+            content: "<strong>" + this.nickname + "</strong><br><medium>Network: </medium><a href='networks/" + this.id + "''>" + this.ssid +"</a><br><medium> Address: " + this.location + "</medium><br><medium>Password: " + this.password + "</medium>"
+          });
+          popup.open(map, this);
+        });
       }
-
-      var marker = new google.maps.Marker(markerOptions);
-
-      var infoWindowOptions = {
-        content: 'You are here!'
-      };
-
-      var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
-
-      infoWindow.open(map, marker);
-      google.maps.event.addListener(marker, 'click', function(){
-        infoWindow.open(map, marker);
-      });
     }
 
     function errorCallback(error) {
       console.log(error);
     }
-
-    // var mapOptions = {
-    //   center: { lat:  51.52, lng: -0.115 },
-    //   zoom: 14,
-    //   mapTypeId: google.maps.MapTypeId.ROADMAP
-    // };
-
-    // var map = new google.maps.Map(mapCanvas, mapOptions);
   }
 }
 
