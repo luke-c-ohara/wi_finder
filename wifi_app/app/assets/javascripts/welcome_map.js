@@ -17,7 +17,7 @@ welcomeMap.initialize = function() {
         type: 'GET',
         dataType: 'JSON',
         success: function(data) {
-          data.push({location: 'You are here!', latitude: position.coords.latitude, longitude: position.coords.longitude});
+          data.push({nickname: 'You are here!', location: 'Current location', latitude: position.coords.latitude, longitude: position.coords.longitude});
           setupMap(data);
         }
       });
@@ -29,8 +29,6 @@ welcomeMap.initialize = function() {
       };
 
       map = new google.maps.Map(mapCanvas, mapOptions);
-
-      // var infoWindow = new google.maps.InfoWindow();
     }
 
     function setupMap(data) {
@@ -41,60 +39,26 @@ welcomeMap.initialize = function() {
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(data[index_increment].latitude, data[index_increment].longitude),
           map: map,
-          location: data[index_increment].location 
+          location: data[index_increment].location,
+          nickname: data[index_increment].nickname,
+          ssid: data[index_increment].ssid,
+          password: data[index_increment].password,
+          id: data[index_increment].id
         });
 
         google.maps.event.addListener(marker, 'click', function() {
-          var popup = new google.maps.InfoWindow();
-          popup.setContent(this.location);
+          var popup = new google.maps.InfoWindow({
+            content: "<strong>" + this.nickname + "</strong><br><medium>Network: </medium><a href='networks/" + this.id + "''>" + this.ssid +"</a><br><medium> Address: " + this.location + "</medium><br><medium>Password: " + this.password + "</medium>"
+          });
+          // popup.setContent(this.location);
           popup.open(map, this);
         });
-
-        // google.maps.event.addListener(marker, 'click', (function(marker, index_increment) {
-        //   return function() {
-        //     infoWindow.setContent(data[index_increment].location);
-        //     infoWindow.open(map, marker);
-        //   }
-        // }) (marker, index_increment));
       }
     }
 
     function errorCallback(error) {
       console.log(error);
     }
-
-    // OLD GEOLOCATOR WORKING
-    // function successCallback(position) {
-    //   var mapOptions = {
-    //     center: { lat:  position.coords.latitude, lng: position.coords.longitude },
-    //     zoom: 15,
-    //     mapTypeId: google.maps.MapTypeId.ROADMAP
-    //   };
-
-    //   var map = new google.maps.Map(mapCanvas, mapOptions);
-
-    //   var markerOptions = {
-    //     position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
-    //     map: map
-    //   }
-
-    //   var marker = new google.maps.Marker(markerOptions);
-
-    //   var infoWindowOptions = {
-    //     content: 'You are here!'
-    //   };
-
-    //   var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
-
-    //   infoWindow.open(map, marker);
-    //   google.maps.event.addListener(marker, 'click', function(){
-    //     infoWindow.open(map, marker);
-    //   });
-    // }
-
-    // function errorCallback(error) {
-    //   console.log(error);
-    // }
   }
 }
 
