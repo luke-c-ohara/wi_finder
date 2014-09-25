@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="small-12 columns">
+  <div class="large-12 columns">
     <h1>Share a network</h1>
 
     <%= form_tag sharings_network_path(@network) do %>
@@ -14,24 +14,31 @@
       </ul>
     </div>
     <% end %>
-
+    <div class="row collapse">
+      <div class="small-10 columns">
     <%= text_field_tag :user_search, nil, class: 'search_input' %>
-    <%= submit_tag("Search", :id=>"search-users") %>
+      </div>
+      <div class="small-2 columns">
+      <%= submit_tag("Search", :id=>"search-users", :class=>"button postfix") %>
+      </div>
+    </div>
     <div id="search_users"></div>
+      <% hidden_field_tag 'friend_ids[]' %>
+      <% @members.each do |member| %>
+      <% if @network.shared_with?(member) == true %>
+      <%= label_tag "friend_ids_#{member.id}", member.email %><br>
+      <%= check_box_tag 'friend_ids[]', member.id, @network.shared_with?(member) %>
 
-    <%= hidden_field_tag 'friend_ids[]' %>
-    <% @members.each do |member| %>
-    <% if @network.shared_with?(member) == true %>
-    <%= label_tag "friend_ids_#{member.id}", member.email %>
-    <%= check_box_tag 'friend_ids[]', member.id, @network.shared_with?(member) %>
-    <% end %>
-    
+     
+      <% end %>
     <% end %>
     <div class="actions">
-     <%= submit_tag "Share network", :id=>"shared-users" %>
+     <%= submit_tag("Share network", :id=>"shared-users", :class=>"button postfix") %>
    </div>
    <br>
    <% end %>
- </div>
 </div>
+</div>
+
+
 

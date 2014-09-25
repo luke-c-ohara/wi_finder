@@ -17,22 +17,22 @@ $(function() {
 
 
   $( document ).ready(function() {
-      console.log( "ready!" );
-      $.ajax({
-        url: '/users',
-        type: 'GET',
-        dataType: 'JSON',
-        success: function(data) {
-          var tags = [];
-          for (var i = 0; i < data.length; i++) {
+    console.log( "ready!" );
+    $.ajax({
+      url: '/users',
+      type: 'GET',
+      dataType: 'JSON',
+      success: function(data) {
+        var tags = [];
+        for (var i = 0; i < data.length; i++) {
           tags.push(data[i].email);
           
         }
-          $( "#user_search" ).autocomplete({
-                source: tags
-              });
-        }
-      });
+        $( "#user_search" ).autocomplete({
+          source: tags
+        });
+      }
+    });
   }); 
 });
 
