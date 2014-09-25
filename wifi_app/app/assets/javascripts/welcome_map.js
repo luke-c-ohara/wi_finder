@@ -3,9 +3,52 @@ var welcomeMap = welcomeMap || {} ;
 welcomeMap.initialize = function() {
   var mapCanvas = $('#map-canvas')[0];
   var map;
+  var geocoder;
 
+  initialize();
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+  } 
+
+  function successFunction(position) {
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    codeLatLng(lat, lng)
+  }
+
+  function errorFunction(){
+    alert("Geocoder failed");
+  }
+
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+  }
+
+  function codeLatLng(lat, lng) {
+
+    var latlng = new google.maps.LatLng(lat, lng);
+    
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+      
+      if (status == google.maps.GeocoderStatus.OK) {        
+        if (results[1]) {
+          if ($('#googlemaps_autocomplete').length) {
+            $('#googlemaps_autocomplete').val(results[0].formatted_address)
+          }
+        } else {
+          $('#googlemaps_autocomplete').text("No automatic geolocations results found");
+        }
+      } else {
+        console.log("Geocoder failed due to: " + status);
+      }
+    });
+  }
+
+  // Drawing the map
   if (!!mapCanvas){
     if (navigator.geolocation) {
+      // console.log(navigator.geolocation);
       navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     } else {
       alert('Your browser does not support geolocation.');
@@ -58,11 +101,9 @@ welcomeMap.initialize = function() {
     }
   }
   // Autocomplete
+  if ($('#googlemaps_autocomplete').length) { 
   var autocomplete = new google.maps.places.Autocomplete($('#googlemaps_autocomplete')[0]);
-
-  google.maps.event.addListener(googlemaps_autocomplete, 'place_changed', function(){
-    var place = autocomplete.getPlace();
-    });
+  }
 }
 
 google.maps.event.addDomListener(window, 'load', welcomeMap.initialize);
