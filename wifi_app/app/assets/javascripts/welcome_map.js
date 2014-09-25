@@ -60,18 +60,31 @@ welcomeMap.initialize = function() {
         type: 'GET',
         dataType: 'JSON',
         success: function(data) {
-          data.push({nickname: 'You are here!', location: 'Current location', latitude: position.coords.latitude, longitude: position.coords.longitude});
           setupMap(data);
         }
       });
 
       var mapOptions = {
-        center: { lat:  position.coords.latitude, lng: position.coords.longitude },
+        center: { lat: position.coords.latitude, lng: position.coords.longitude },
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
 
       map = new google.maps.Map(mapCanvas, mapOptions);
+
+      // User location marker
+      var user_marker = new google.maps.Marker({
+          position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+          map: map,
+          icon: 'https://maps.google.com/mapfiles/marker_green.png'
+        });
+
+      google.maps.event.addListener(user_marker, 'click', function() {
+        var user_popup = new google.maps.InfoWindow({
+          content: "You are here!"
+        });
+        user_popup.open(map, this);
+      });
     }
 
     // Draw markers on map
