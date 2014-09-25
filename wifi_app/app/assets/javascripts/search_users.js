@@ -25,7 +25,6 @@ $(function() {
           var tags = [];
           for (var i = 0; i < data.length; i++) {
           tags.push(data[i].email);
-          
         }
         $( "#user_search" ).autocomplete({
           source: tags
