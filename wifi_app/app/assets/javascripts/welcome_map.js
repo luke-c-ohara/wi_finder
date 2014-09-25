@@ -81,7 +81,7 @@ welcomeMap.initialize = function() {
 
       google.maps.event.addListener(user_marker, 'click', function() {
         var user_popup = new google.maps.InfoWindow({
-          content: "You are here!"
+          content: "RAWR! You are here!"
         });
         user_popup.open(map, this);
       });
