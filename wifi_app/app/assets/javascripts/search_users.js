@@ -16,18 +16,25 @@ $(function() {
   });
 
 
-  $( document ).ready(function() {
+ $( document ).ready(function(ev) {
+   // ev.preventDefault();
     $.ajax({
       url: '/users',
       type: 'GET',
       dataType: 'JSON',
+      data: { q: $('#user_search').val() },
       success: function(data) {
         var tags = [];
         for (var i = 0; i < data.length; i++) {
-          tags.push(data[i].email);
+          tags.push({value: data[i].email, id: data[i].id});
         }
         $( "#user_search" ).autocomplete({
-          source: tags
+          source: tags, 
+          select: function(a,b) {
+            a.preventDefault();
+            $("#user_search").val('');
+          displayEmails(b.item);
+          }
         });
       }
     });
@@ -35,7 +42,7 @@ $(function() {
 });
 
 function displayEmails(object) {
-  $("#search_users").append('<label for="friend_ids_'+object.id+'">' + object.email + '</label>');
-  $("#search_users").append('<input id="friend_ids_" name="friend_ids[]" type="checkbox" checked="checked" value="'+object.id+'">');
+  $("#search_users").append('<label for="friend_ids_'+object.id+'">' + object.value + '</label>');
+  $("#search_users").append('<input id="friend_ids_' + object.id + '" name="friend_ids[]" type="checkbox" value="'+object.id+'" checked="checked">');
 
 }
