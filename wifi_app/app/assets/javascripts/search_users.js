@@ -32,7 +32,6 @@ $(function() {
           source: tags, 
           select: function(a,b) {
             a.preventDefault();
-            $("#user_search").val('');
           displayEmails(b.item);
           }
         });
@@ -43,6 +42,6 @@ $(function() {
 
 function displayEmails(object) {
   $("#search_users").append('<label for="friend_ids_'+object.id+'">' + object.value + '</label>');
-  $("#search_users").append('<input id="friend_ids_' + object.id + '" name="friend_ids[]" type="checkbox" value="'+object.id+'" checked="checked">');
+  $("#search_users").append('<input id="friend_ids_' + object.id + '" name="friend_ids[]" type="checkbox" value="'+object.id+'" checked="checked"><br>');
 
 }

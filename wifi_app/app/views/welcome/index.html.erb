@@ -1,18 +1,7 @@
 <% if params[:action] == 'index' %>
 <div class="row map-canvas-row">
   <div class="small-12 medium-4 large-3 columns">
-
-    <%= link_to 'Add a network', new_network_path, :class => "button expand" %>
-    
     <h4>Storing and sharing your favourite wifi network details</h4>
-
-    <h5>Public networks:</h5>
-
-    <% @public_networks.each do |network| %>
-    <ul> 
-      <li><%= link_to network.nickname, network %></li>
-    </ul>
-    <% end %>
   </div>
 
   <div class="small-12 medium-8 large-9 columns map-canvas-column">
