@@ -76,7 +76,7 @@ welcomeMap.initialize = function() {
       var user_marker = new google.maps.Marker({
           position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
           map: map,
-          icon: 'https://maps.google.com/mapfiles/marker_green.png'
+          icon: 'http://hydra-media.cursecdn.com/terraria.gamepedia.com/0/0b/Baby_Dinosaur.png?version=4b68c5e3222e9d1205383eaffa463d64'
         });
 
       google.maps.event.addListener(user_marker, 'click', function() {
