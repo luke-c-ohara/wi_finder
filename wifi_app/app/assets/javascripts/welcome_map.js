@@ -31,6 +31,7 @@ welcomeMap.initialize = function() {
       map = new google.maps.Map(mapCanvas, mapOptions);
     }
 
+    // Draw markers on map
     function setupMap(data) {
       for (var index_increment = 0; index_increment < data.length; index_increment++) {
         var marker = new google.maps.Marker({
@@ -56,6 +57,12 @@ welcomeMap.initialize = function() {
       console.log(error);
     }
   }
+  // Autocomplete
+  var autocomplete = new google.maps.places.Autocomplete($('#googlemaps_autocomplete')[0]);
+
+  google.maps.event.addListener(googlemaps_autocomplete, 'place_changed', function(){
+    var place = autocomplete.getPlace();
+    });
 }
 
 google.maps.event.addDomListener(window, 'load', welcomeMap.initialize);

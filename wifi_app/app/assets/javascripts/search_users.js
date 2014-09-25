@@ -17,7 +17,6 @@ $(function() {
 
 
   $( document ).ready(function() {
-      console.log( "ready!" );
       $.ajax({
         url: '/users',
         type: 'GET',
