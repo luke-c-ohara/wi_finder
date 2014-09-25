@@ -9,7 +9,7 @@ $(function() {
       data: { q: $('#user_search').val() },
       dataType: 'JSON',
       success: function(data) {
-        $("#search_users").empty()
+        $("#user_search").val('');
         data.forEach(displayEmails);
       }
     });
@@ -36,6 +36,6 @@ $(function() {
 
 function displayEmails(object) {
   $("#search_users").append('<label for="friend_ids_'+object.id+'">' + object.email + '</label>');
-  $("#search_users").append('<input id="friend_ids_" name="friend_ids[]" type="checkbox" value="'+object.id+'">');
+  $("#search_users").append('<input id="friend_ids_" name="friend_ids[]" type="checkbox" checked="checked" value="'+object.id+'">');
 
 }
