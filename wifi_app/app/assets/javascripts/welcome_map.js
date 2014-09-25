@@ -9,7 +9,7 @@ welcomeMap.initialize = function() {
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
-  } 
+  }
 
   function successFunction(position) {
     var lat = position.coords.latitude;
@@ -18,7 +18,7 @@ welcomeMap.initialize = function() {
   }
 
   function errorFunction(){
-    alert("Geocoder failed");
+    alert("Geocoding failed");
   }
 
   function initialize() {
@@ -37,7 +37,7 @@ welcomeMap.initialize = function() {
             $('#googlemaps_autocomplete').val(results[0].formatted_address)
           }
         } else {
-          $('#googlemaps_autocomplete').text("No automatic geolocations results found");
+          $('#googlemaps_autocomplete').text("Automatic geolocation not found");
         }
       } else {
         console.log("Geocoder failed due to: " + status);
@@ -100,7 +100,7 @@ welcomeMap.initialize = function() {
       console.log(error);
     }
   }
-  // Autocomplete
+  // Autocomplete address
   if ($('#googlemaps_autocomplete').length) { 
   var autocomplete = new google.maps.places.Autocomplete($('#googlemaps_autocomplete')[0]);
   }
