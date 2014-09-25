@@ -13,6 +13,4 @@ class Friendship < ActiveRecord::Base
     errors.add(:friend_id, "cannot friend self") unless user_id != friend_id
   end
 
-
-
 end
