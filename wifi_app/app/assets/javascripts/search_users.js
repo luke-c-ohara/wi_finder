@@ -32,7 +32,6 @@ $(function() {
           source: tags, 
           select: function(a,b) {
             a.preventDefault();
-            $("#user_search").val('');
           displayEmails(b.item);
           }
         });
