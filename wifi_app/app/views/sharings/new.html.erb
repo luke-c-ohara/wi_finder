@@ -28,8 +28,6 @@
       <% if @network.shared_with?(member) == true %>
       <%= label_tag "friend_ids_#{member.id}", member.email %><br>
       <%= check_box_tag 'friend_ids[]', member.id, @network.shared_with?(member) %>
-
-     
       <% end %>
     <% end %>
     <div class="actions">

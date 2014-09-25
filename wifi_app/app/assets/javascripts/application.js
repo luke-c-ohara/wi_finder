@@ -13,5 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui.js
+//= require modernizr.js
+//= require foundation.min.js
 //= require welcome_map.js
 //= require_tree .
