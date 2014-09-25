@@ -38,9 +38,11 @@
         </tr>
       <% end %>
     <table>
-
+    <% if can? :update, @network %>
     <%= link_to 'Edit', edit_network_path(@network), :class => "button" %>
     <%= link_to 'Delete', @network, :class => "button", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
     <%= link_to 'Back', networks_path, :class => "button" %>
+    
   </div>
 </div>

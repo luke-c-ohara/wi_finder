@@ -16,6 +16,7 @@ class NetworksController < ApplicationController
   end
 
   def show
+    @user = current_user
     @network = Network.find(params[:id])
 
     respond_to do |format|
