@@ -28,7 +28,7 @@
       <tr>
         <th><h3>Shared with others</h3></th>
       </tr>
-      <% @inverse_friendships.each do |friendship| %>
+      <% (@inverse_friendships.uniq_by { |f| f.network_id }).each do |friendship| %>
       <tr>
         <% network = Network.find(friendship.network_id) %>
         <td><%= link_to network.nickname, network %></td>
