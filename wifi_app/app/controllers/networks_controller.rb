@@ -39,7 +39,7 @@ class NetworksController < ApplicationController
       flash[:notice] = 'Network was successfully created.'
       redirect_to @network
     else
-      flash[:alert] = 'Error.'
+      flash[:error] = 'Error. Form incomplete.'
       redirect_to new_network_path
     end
   end
