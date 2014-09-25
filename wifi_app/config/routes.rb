@@ -1,6 +1,6 @@
 WifiApp::Application.routes.draw do
   
-  root to: "welcome#index"
+  root to: "welcome#map"
 
   get "sharings/new"
   get "sharings/create"
