@@ -16,7 +16,7 @@
     <% end %>
 
     <%= text_field_tag :user_search, nil, class: 'search_input' %>
-    <%= submit_tag("Search", :id=>"search-users") %>
+    <%= submit_tag("Search users", :id=>"search-users", :class=>"button") %>
     <div id="search_users"></div>
 
     <%= hidden_field_tag 'friend_ids[]' %>
@@ -28,7 +28,7 @@
     
     <% end %>
     <div class="actions">
-     <%= submit_tag "Share network", :id=>"shared-users" %>
+     <%= submit_tag("Share network", :id=>"shared-users", :class => "button expand") %>
    </div>
    <br>
    <% end %>

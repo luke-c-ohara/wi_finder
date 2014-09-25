@@ -4,47 +4,36 @@
   <title>wi-finder</title>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <%= stylesheet_link_tag "application", :media => "all" %>
-  <script type="text/javascript" src='http://code.jquery.com/jquery-2.1.1.js'></script>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places">
-  </script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-    <div class="row">
-      <div class="small-12 columns">
-        <header>
-          <nav class="top-bar">
-            <ul class="title-area">
-              <li class="name">
-                <h1><%= link_to "wi-finder", root_path %></h1>
-              </li>
-            </ul>
+  <header>
+    <div class="contain-to-grid">
+      <nav class="top-bar" data-topbar role="navigation" data-options="is_hover: false">
+        <ul class="title-area">
+          <li class="name"><h1><%= link_to "wi-finder", root_path %></h1></li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+        </ul>
 
-            <section class="top-bar-section">
-              <ul class="right">
-                <% if current_user %>
-                <li class="divider"></li>
-                <li><%= link_to current_user.email, root_path %></li>
-                <li class="divider"></li>
-                <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-                <li class="divider"></li>
-                <li><%= link_to "Networks", networks_path %></li>
-                <li class="divider"></li>
-                <% else %>
-                <li class="divider"></li>
-                <li><%= link_to "Sign In", new_user_session_path %></li>
-                <li class="divider"></li>
-                <li><%= link_to "Register", new_user_registration_path %></li>
-                <li class="divider"></li>
-                <% end %>
-              </ul>
-            </section>
-          </nav>
-        </header>
-      </div>
+        <section class="top-bar-section">
+          <ul class="right">
+            <% if current_user %>
+            <li><%= link_to "Home | #{current_user.email}", root_path %></li>
+            <li><%= link_to "Networks", networks_path %></li>
+            <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+            <li><%= link_to "Sign In", new_user_session_path %></li>
+            <li><%= link_to "Register", new_user_registration_path %></li>
+            <li class="divider"></li>
+            <% end %>
+          </ul>
+        </section>
+      </nav>
     </div>
+  </header>
 
     <div class="row">
       <div class="small-12 columns">
@@ -55,5 +44,8 @@
     
     <%= yield %>
 
+    <script>
+      $(document).foundation();
+    </script>
 </body>
 </html>

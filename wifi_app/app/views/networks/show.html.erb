@@ -2,8 +2,8 @@
   <div class="small-12 medium-12 large-12 columns">
     <p id="notice"><%= notice %></p>
 
-    <h1><%= @network.nickname %></h1>
-    <h2><%= @network.location %></h2>
+    <h3><%= @network.nickname %></h3>
+    <h4><%= @network.location %></h4>
 
     <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@network.latitude}%2C#{@network.longitude}" %>
 
@@ -28,15 +28,19 @@
 
     
 
-    <%= link_to 'Share this network', sharings_new_network_path(@network), :class => "button expand" %><br>
+    <%= link_to 'Share this network', sharings_new_network_path(@network), :class => "button expand" %>
 
-    <h2>Shared with</h2>
-    <% @network.friends.each do |friend| %>
-    <%= friend.email %>
-    <% end %><br>
+    <table>
+      <caption>Shared with</caption>
+      <% @network.friends.each do |friend| %>
+        <tr>
+          <td class="share_table"><%= friend.email %></td>
+        </tr>
+      <% end %>
+    <table>
 
-    <%= link_to 'Edit', edit_network_path(@network) %><br>
-    <%= link_to 'Delete', @network, method: :delete, data: { confirm: 'Are you sure?' } %><br>
-    <%= link_to 'Back', networks_path %>
+    <%= link_to 'Edit', edit_network_path(@network), :class => "button" %>
+    <%= link_to 'Delete', @network, :class => "button", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Back', networks_path, :class => "button" %>
   </div>
 </div>
