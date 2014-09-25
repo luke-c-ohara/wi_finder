@@ -2,7 +2,7 @@
   <div><%= f.hidden_field :user_id, value: current_user.id %></div>
   <div><%= f.text_field :ssid, placeholder: 'network name (SSID)' %></div>
   <div><%= f.text_field :password, placeholder: 'password' %></div>
-  <div><%= f.text_field :location, placeholder: 'address' %></div>
+  <div><%= f.text_field :location, :id => 'googlemaps_autocomplete', placeholder: 'address' %></div>
   <div><%= f.hidden_field :longitude, :value => @network.longitude %></div>
   <div><%= f.hidden_field :latitude, :value => @network.latitude %></div>
   <div><%= f.text_field :nickname, placeholder: 'nickname' %></div>
