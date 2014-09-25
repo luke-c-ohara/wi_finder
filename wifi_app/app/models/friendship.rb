@@ -5,4 +5,12 @@ class Friendship < ActiveRecord::Base
 
   attr_accessible :friend_id, :network_id, :user_id
 
+  validate :cannot_friend_self
+
+  validates :friend_id, :uniqueness => {:scope => [:network_id, :user_id]}
+
+  def cannot_friend_self
+    errors.add(:friend_id, "cannot friend self") unless user_id != friend_id
+  end
+
 end

@@ -27,11 +27,11 @@ $(function() {
           tags.push(data[i].email);
           
         }
-          $( "#user_search" ).autocomplete({
-                source: tags
-              });
-        }
-      });
+        $( "#user_search" ).autocomplete({
+          source: tags
+        });
+      }
+    });
   }); 
 });
 

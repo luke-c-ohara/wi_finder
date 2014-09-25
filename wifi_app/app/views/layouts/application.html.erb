@@ -21,8 +21,9 @@
         <section class="top-bar-section">
           <ul class="right">
             <% if current_user %>
-            <li><%= link_to "Home | #{current_user.email}", root_path %></li>
+            <li><%= link_to "Add", new_network_path %></li>
             <li><%= link_to "Networks", networks_path %></li>
+            <li><%= link_to "View on Map", map_path %></li>
             <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
             <% else %>
             <li><%= link_to "Sign In", new_user_session_path %></li>
@@ -37,8 +38,12 @@
 
     <div class="row">
       <div class="small-12 columns">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+        <% flash.each do |key, value| %>
+          <div data-alert class="alert-box <% if key == :error %>alert<% else %>success<% end %> alert-<%= key %>">
+            <%= value %>
+            <a href="#" class="close">&times;</a>
+          </div>        
+        <% end %>
       </div>
     </div>
     

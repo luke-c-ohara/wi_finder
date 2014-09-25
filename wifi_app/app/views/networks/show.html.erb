@@ -1,6 +1,5 @@
 <div class="row network_index">
   <div class="small-12 medium-12 large-12 columns">
-    <p id="notice"><%= notice %></p>
 
     <h3><%= @network.nickname %></h3>
     <h4><%= @network.location %></h4>
@@ -26,9 +25,9 @@
       </tr>
     </table>
 
-    
-
+   
     <%= link_to 'Share this network', sharings_new_network_path(@network), :class => "button expand" %>
+
 
     <table>
       <caption>Shared with</caption>
@@ -38,9 +37,11 @@
         </tr>
       <% end %>
     <table>
-
+    <% if can? :update, @network %>
     <%= link_to 'Edit', edit_network_path(@network), :class => "button" %>
     <%= link_to 'Delete', @network, :class => "button", method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
     <%= link_to 'Back', networks_path, :class => "button" %>
+    
   </div>
 </div>

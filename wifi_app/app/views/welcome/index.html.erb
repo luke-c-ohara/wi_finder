@@ -1,3 +1,4 @@
+<% if params[:action] == 'index' %>
 <div class="row map-canvas-row">
   <div class="small-12 medium-4 large-3 columns">
 
@@ -15,6 +16,9 @@
   </div>
 
   <div class="small-12 medium-8 large-9 columns map-canvas-column">
+<% else %>
+  <div class="small-12 medium-12 large-12 columns map-canvas-column">
+<% end %>
     <section id="map-canvas"></section>
   </div>
 </div>

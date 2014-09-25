@@ -15,6 +15,11 @@ class Ability
         can :update, Network, user_id: user.id
         can :destroy, Network, user_id: user.id
         can :read, Friendship
+
+        can :create, Friendship do |friendship|
+            Network.where(public_private: 'Private')
+        end
+
         can :create, Friendship, user_id: user.id
         can :destroy, Friendship
         can :read, User

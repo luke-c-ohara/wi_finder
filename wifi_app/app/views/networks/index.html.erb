@@ -1,8 +1,6 @@
 <div class="row network_index">
   <div class="small-12 medium-12 large-12 columns">
     
-    <%= link_to 'Add a network', new_network_path, :class => "button expand" %>
-    
     <table>
       <caption><h2>Networks</h2></caption>
 
@@ -28,13 +26,15 @@
       <tr>
         <th><h3>Shared with others</h3></th>
       </tr>
-      <% @inverse_friendships.each do |friendship| %>
+      <% (@inverse_friendships.uniq_by { |f| f.network_id }).each do |friendship| %>
       <tr>
         <% network = Network.find(friendship.network_id) %>
         <td><%= link_to network.nickname, network %></td>
       </tr>
       <% end %>
     </table>
+
+    <%= link_to 'Add a network', new_network_path, :class => "button expand" %>
 
   </div>
 </div>
