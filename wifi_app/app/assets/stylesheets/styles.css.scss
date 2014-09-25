@@ -40,13 +40,24 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #0B486B;
 }
 
-.top-bar-section li:not(.has-form) a:not(.button) {
+.top-bar-section li:not(.has-form) a:not(.button),
+.contain-to-grid {
   background-color: #0B486B;
   font-family: 'Raleway', sans-serif;
 }
 
+
+
 .top-bar-section li:not(.has-form) a:not(.button):hover {
   background-color: #002F52;
+}
+
+nav.top-bar.expanded {
+  background-color: #0B486B;
+}
+
+.top-bar.expanded .title-area {
+  background-color: #0B486B;
 }
 
 .button,
