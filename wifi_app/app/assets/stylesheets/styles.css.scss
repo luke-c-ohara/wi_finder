@@ -30,3 +30,35 @@ body {
 .share_table {
   text-align: center;
 }
+
+.top-bar {
+  background-color: #0B486B;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+  background-color: #0B486B;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button):hover {
+  background-color: #002F52;
+}
+
+.button,
+.button.expand {
+  background-color: #5F5865;
+}
+
+.button:hover,
+.button.expand:hover {
+  background-color: #453E4B;
+}
+
+.alert-box.alert {
+  background-color: #A60000;
+  border-color: #A60000;
+}
+
+.alert-box.success {
+  background-color: #005C56;
+  border-color: #005C56;
+}
