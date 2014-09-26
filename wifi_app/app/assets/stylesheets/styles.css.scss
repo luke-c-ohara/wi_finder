@@ -86,7 +86,17 @@ td a {
 }
 
 .splash {
-  background: url("http://ak4.picdn.net/shutterstock/videos/2360405/preview/stock-footage-night-traffic-in-the-city-soft-focus.jpg") no-repeat center center fixed;
+  background: url("http://wallpapersfor.me/wp-content/uploads/2012/02/city-hazy-blurred-unsharp-night-rain-1920x1080.jpg") no-repeat center center fixed;
   background-size: cover;
   height: 100%;
+  text-align: center;
+}
+
+.user_form {
+  background: white;
+  margin-top: 20px;
+}
+
+#splash_text {
+  color: white;
 }
