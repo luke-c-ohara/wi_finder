@@ -102,7 +102,7 @@ welcomeMap.initialize = function() {
 
         google.maps.event.addListener(marker, 'click', function() {
           var popup = new google.maps.InfoWindow({
-            content: "<strong>" + this.nickname + "</strong><br><medium>Network: </medium><a href='networks/" + this.id + "''>" + this.ssid +"</a><br><medium> Address: " + this.location + "</medium><br><medium>Password: " + this.password + "</medium>"
+            content: "<strong>" + this.nickname + "</strong><br><medium> Address: " + this.location + "</medium><br><medium>Network: </medium><a href='networks/" + this.id + "''>" + this.ssid +"</a><br><medium>Password: " + this.password + "</medium>"
           });
           popup.open(map, this);
         });
